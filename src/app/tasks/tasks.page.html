@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tarefas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Nome</ion-label>
+      <ion-input type="text" name="nome" [(ngModel)]="task.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Descrição</ion-label>
+      <ion-input type="text" name="descricao" [(ngModel)]="task.descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Status</ion-label>
+      <ion-select name="status" [(ngModel)]="task.status">
+        <ion-select-option value="1">A Fazer</ion-select-option>
+        <ion-select-option value="2">Em Andamento</ion-select-option>
+        <ion-select-option value="3">Concluído</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Usuário ID</ion-label>
+      <ion-input type="number" name="usuarioId" [(ngModel)]="task.usuarioId"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" color="primary" (click)="createTask(task)">
+      Criar Tarefa
+    </ion-button>
+  </ion-list>
+
+  <ion-list>
+    <ion-item *ngFor="let task of tasks">
+      <ion-label>
+        <h2>{{ task.nome }}</h2>
+        <p>{{ task.descricao }}</p>
+        <p>Status: {{ task.status }}</p>
+        <p>ID do Usuário: {{ task.usuarioId }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
